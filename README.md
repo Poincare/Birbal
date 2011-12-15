@@ -1,6 +1,6 @@
 #Birbal
 
-A clever little framework for Node.JS.
+A clever little framework for Node.js
 
 * Handles simple routing for you
 * Doesn't restrict you at all.
