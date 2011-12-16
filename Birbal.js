@@ -22,10 +22,6 @@ var Birbal = function (routes) {
 		var matched = false; 
 		for(var i in routes) {
 
-			if(this.specials["beforeFunc"] != null) {
-			    this.specials["beforeFunc"]();
-			}
-
 			if(pathname === i) {
 	 
 			    if(routes[i][1] === request.method) {
@@ -42,7 +38,10 @@ var Birbal = function (routes) {
 		}
 
 		if(matched != true) {
-	
+	        if(this.specials["beforeFunc"] != null) {
+			    this.specials["beforeFunc"]();
+			}
+
 			if(this.specials["catchAllFunc"] != null && this.specials["catchAllFunc"] != undefined) {
 			    response.writeHead(200, {"Content-Type":"text/html"});
 			    response.write(this.specials["catchAllFunc"]());
