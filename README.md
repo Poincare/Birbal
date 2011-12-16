@@ -5,6 +5,29 @@ A clever little framework for Node.js
 * Handles simple routing for you
 * Doesn't restrict you at all.
 
+Install with:
+
+    npm install -g birbal
+
 Have fun!
 
-Check out example.js which has some code which shows how you can use Birbal.
+Quick example:
+    var akbar = require("Birbal")
+    function hi() {
+        return "Hello!";
+    }
+
+    var routes = {"/hi":[hello, "GET"]}
+
+    akbar.Birbal();
+
+Awesome!
+
+Here's what coming really soon:
+
+* POST and GET variable access
+* Integration with Jade, Haml.JS and Moustache
+* Integration with Redis and MongoDB
+* Basically turning Birbal into a microframework
+
+Watch this project to keep in touch :) 
