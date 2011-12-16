@@ -23,9 +23,9 @@ Quick example:
 
 Awesome!
 
-Here's what coming really soon:
+Here's what coming really soon (and is already done):
 
-* POST and GET variable access
+* POST and GET variable access (done)
 * Integration with Jade, Haml.JS and Moustache
 * Integration with Redis and MongoDB
 * Basically turning Birbal into a microframework
