@@ -1,5 +1,6 @@
 var http = require("http");
 var url = require("url");
+var jade = require("jade");
 
 var Birbal = function (routes) {
 
@@ -56,6 +57,25 @@ var Birbal = function (routes) {
     }
 
     this.start();
+}
+
+//still working on this, not yet complete, but, for Jade users
+function render_template(path, vars, options=null) {
+    fs.readFile(path, "binary", function(err, file) {
+        if(err) {
+            return false;
+        }
+        var fn = null;
+    
+        if(options == null) {
+            var fn = jade.compile(file);
+        }
+        else {
+            var fn = jade.compile(file, options);
+        }
+
+        return fn(locals);
+    }
 }
 
 exports.Birbal = Birbal;
