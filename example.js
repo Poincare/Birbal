@@ -17,7 +17,6 @@ function before() {
 
 //called when no other request matches
 function oops() {
-    console.log("Type in the URL again!");
     return "Oops!";
 }
 

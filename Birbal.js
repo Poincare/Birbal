@@ -1,6 +1,6 @@
 var http = require("http");
 var url = require("url");
-var jade = require("jade");
+var qs = require("querystring");
 
 var Birbal = function (routes) {
 
@@ -19,6 +19,26 @@ var Birbal = function (routes) {
 
 	this.onRequest = function (request, response, specials) {
 		var pathname = url.parse(request.url).pathname;
+
+        var request_vars;
+
+        if(request.method == 'POST') {
+            var body = ''
+            request.on('data', function(data) {
+                body += data;
+            });
+    
+            request.on('end', function() {
+                request_vars = qs.parse(body);
+            });
+        }
+
+        else if(request.method == 'GET') {
+            var url_parts = url.parse(request.url, true);
+            var query = url_parts.query;
+            
+            request_vars = query;   
+        }
 		   
 		var matched = false; 
 		for(var i in routes) {
@@ -45,7 +65,7 @@ var Birbal = function (routes) {
 
 			if(this.specials["catchAllFunc"] != null && this.specials["catchAllFunc"] != undefined) {
 			    response.writeHead(200, {"Content-Type":"text/html"});
-			    response.write(this.specials["catchAllFunc"]());
+			    response.write(this.specials["catchAllFunc"](request_vars));
 			    response.end();
 			}
 		}
