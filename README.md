@@ -12,7 +12,6 @@ Install with:
 Have fun!
 
 Quick example:
-```javascript
 
     var akbar = require("Birbal")
     function hi() {
@@ -23,7 +22,6 @@ Quick example:
 
     akbar.Birbal();
 
-```
 
 Awesome!
 
