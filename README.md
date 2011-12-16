@@ -12,6 +12,7 @@ Install with:
 Have fun!
 
 Quick example:
+```javascript
     var akbar = require("Birbal")
     function hi() {
         return "Hello!";
@@ -20,6 +21,7 @@ Quick example:
     var routes = {"/hi":[hello, "GET"]}
 
     akbar.Birbal();
+```
 
 Awesome!
 
