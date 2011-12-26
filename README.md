@@ -3,6 +3,7 @@
 A clever little framework for Node.js
 
 * Handles simple routing for you
+* Handles POST and GET variables
 * Doesn't restrict you at all.
 
 Install with:
