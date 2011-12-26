@@ -1,6 +1,6 @@
 #Birbal
 
-A clever little framework for Node.js
+###A clever little framework for Node.js*
 
 * Handles simple routing for you
 * Handles POST and GET variables
@@ -28,6 +28,7 @@ Awesome!
 
 Here's what coming really soon (and is already done):
 
+* Get the damn syntax highlighting to work in this README
 * POST and GET variable access (done)
 * Integration with Jade, Haml.JS and Moustache
 * Integration with Redis and MongoDB
