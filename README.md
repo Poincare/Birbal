@@ -26,19 +26,23 @@ app.get(*path*, *handler*[, *middleware*]).post(...)
 
 *handler* is a function of request, response, and any passed values of the middleware. *middleware* is a function of *handler*, request, and response. The following is an example of this all working together.
 
-	app.get('/', function(req, res, time) {
-		res.end("hi, it's "+time+".");
-	}, function(handler, req, res) {
-		handler((new Date()).getTime());
-	});
+```javascript
+app.get('/', function(req, res, time) {
+	res.end("hi, it's "+time+".");
+}, function(handler, req, res) {
+	handler((new Date()).getTime());
+});
+```
 
 Request Variables
 -----------------
 Request variables are exposed to handlers and middleware as *this.vars*. The following is an example of this at use.
 
-	app.get(/^/, function(req, res) {
-		res.end("hi, "+this.vars.name);
-	});
+```javascript
+app.get(/^/, function(req, res) {
+	res.end("hi, "+this.vars.name);
+});
+```
 
 Running a Server
 ----------------
