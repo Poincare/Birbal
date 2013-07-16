@@ -1,15 +1,15 @@
 {
     "name" : "Birbal",
-    "version" : "0.0.3",
+    "version" : "0.1.0",
     "description":"Quick, simple routing",
     "keywords":["routing", "router", "framework"],
     "author":"Dhaivat Pandya <dhaivatpandya@gmail.com> (http://poincare101.blogspot.com)",
-    "repository" :
-    { "type": "git",
+    "repository" : { 
+      "type": "git",
       "url" : "https://github.com/poincare/Birbal"
     },
-    "bugs" :
-    { "email" : "dhaivatpandya@gmail.com",
+    "bugs" : { 
+      "email" : "dhaivatpandya@gmail.com",
       "url" : "http://github.com/poincare/Birbal/issues"
     },
     "directories" : {"lib" : "./lib"},
