@@ -1,31 +1,19 @@
-var serv = require("./Birbal.js");
+// import http and birbal
+var http = require('http'),
+	app = require("./Birbal.js");
 
-//called for "/" and "/else" for GET requests
-function hello() {
-    return "Wazzup!";
-}
+// create rules
+app.get('/', function(req, res, time) {
+	// string-based rule utilizing middleware
+	res.end("hi, it's "+time+".");
+}, function(handler, req, res) {
+	// middleware fires the handler with
+	// ... additional parameters
+	handler((new Date()).getTime());
+}).post(/^\/new/, function(req, res) {
+	// request vars are parsed and 
+	// ... set to `this.vars`
+	res.end("welcome, "+this.vars.name);
+});
 
-//called for "/misc" GET requests
-function misc() {
-    return "<h1>Misc</h1>";
-}
-
-//called before ever single request
-function before() {
-    console.log("Hey! A request came in!");
-}
-
-//called when no other request matches
-function oops() {
-    return "Oops!";
-}
-
-var routes = {
-    ":before":[before],
-    "/":[hello, "GET"],
-    "/else":[hello, "GET"],
-    "/misc":[misc, "GET"],
-    ":catchall":[oops, "GET"]
-};
-
-serv.Birbal(routes);
+http.createServer(app).listen(9000);

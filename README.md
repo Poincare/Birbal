@@ -1,37 +1,52 @@
-#Birbal
+Birbal
+======
 
-###A clever little framework for Node.js*
+##A clever little framework for Node.js
 
-* Handles simple routing for you
-* Handles POST and GET variables
-* Doesn't restrict you at all.
+- Provides regex- and string-based routing of requested URLs.
+- Parses HTTP query-string parameters and body parameters, exposed in handler callbacks as `this.vars`.
+- Allows for middleware, such as database queries or cookie parsing.
+- Has a simple chainable syntax.
 
-Install with:
+Setup
+-----
+You will want to include the Birbal module. Most likely, you will set the imported value to a convenient name, like `app` which is used throughout our examples.
 
-    npm install -g birbal
+```javascript
+var app = require("Birbal");
+```
 
-Have fun!
+Routing
+-------
+Routing is performed by use of `Birbal#get`, `Birbal#post`, etc. Usage is of the following form. 
 
-Quick example:
+```javascript
+app.get(*path*, *handler*[, *middleware*]).post(...)
+```
 
-    var akbar = require("Birbal")
-    function hi() {
-        return "Hello!";
-    }
+*handler* is a function of request, response, and any passed values of the middleware. *middleware* is a function of *handler*, request, and response. The following is an example of this all working together.
 
-    var routes = {"/hi":[hello, "GET"]}
+```javascript
+app.get('/', function(req, res, time) {
+	res.end("hi, it's "+time+".");
+}, function(handler, req, res) {
+	handler((new Date()).getTime());
+});
+```
 
-    akbar.Birbal();
+Request Variables
+-----------------
+Request variables are exposed to handlers and middleware as *this.vars*. The following is an example of this at use.
 
+```javascript
+app.get(/^/, function(req, res) {
+	res.end("hi, "+this.vars.name);
+});
+```
 
-Awesome!
+Running a Server
+----------------
 
-Here's what coming really soon (and is already done):
-
-* Get the damn syntax highlighting to work in this README
-* POST and GET variable access (done)
-* Integration with Jade, Haml.JS and Moustache
-* Integration with Redis and MongoDB
-* Basically turning Birbal into a microframework
-
-Watch this project to keep in touch :) 
+```javascript
+http.createServer(app).listen(8080);
+```
